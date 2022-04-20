@@ -61,7 +61,7 @@ void PrintMenuList(AdjacencyList& graph) {
 
     if (option == 1) {
         cout << "Note, ingredients should be entered separated by a comma with no spaces." << endl;
-        cout << "The minimum ingredients entered should be three." << endl;
+        cout << "The minimum amount of ingredients entered should be three." << endl;
         string list;
         cin >> list;
 
