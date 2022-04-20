@@ -179,6 +179,7 @@ Recipe PriorityQueue::extractMin() {
     return result;
 }
 
+//Function to insert into a priority queue select recipes which contain all the ingredients given by the user
 Recipe PriorityQueue::selectRecipe(vector<string> ing) {
     for (int i = 0; i < RSize; i++) {
         Recipe r = extractMin();

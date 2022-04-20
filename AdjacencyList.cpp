@@ -168,6 +168,8 @@ vector<string> AdjacencyList::InitializeIngredients(string& ing) {
 }
 
 //Referenced Sarah Nix's stepik code (which was inspired from Aman's slides)
+//This function uses a BFS to select recipes to add to a priority queue
+//These recipes must contain all the ingredients given by the user
 void AdjacencyList::BFS(vector<string>& ing) {
     auto src = recipes.begin();
     unordered_map<string, bool> beenThere;

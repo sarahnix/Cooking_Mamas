@@ -7,6 +7,7 @@ private:
 
     string pq[500]; ///this can also be changed for testing
     int pqSize = -1;
+
 public:
 
     void InitializeQueue(Recipe& r);
