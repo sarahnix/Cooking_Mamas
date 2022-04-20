@@ -19,7 +19,6 @@ public:
     void ReadFile();
     vector<string> InitializeSteps(string& step);
     vector<string> InitializeIngredients(string& ing);
-    void BFS(vector<string>& ing);
 
     int parent(int i);
     int leftChild(int i);
@@ -28,4 +27,6 @@ public:
     void heapifyDown(int i);
     void insertToPQ(string r);
     Recipe extractMin();
+
+    void BFS(vector<string>& ing);
 };

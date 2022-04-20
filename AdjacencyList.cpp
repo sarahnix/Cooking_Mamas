@@ -167,49 +167,6 @@ vector<string> AdjacencyList::InitializeIngredients(string& ing) {
     return ingredients;
 }
 
-//Referenced Sarah Nix's stepik code (which was inspired from Aman's slides)
-//This function uses a BFS to select recipes to add to a priority queue
-//These recipes must contain all the ingredients given by the user
-void AdjacencyList::BFS(vector<string>& ing) {
-    auto src = recipes.begin();
-    unordered_map<string, bool> beenThere;
-    beenThere[src->first] = true;
-
-    queue<string> q;
-    q.push(src->first);
-
-    while (!q.empty()) {
-        string i = q.front();
-
-        int count = 0;
-        for (int k = 0; k < ing.size(); k++) {
-            for (int m = 0; m < recipeList[i].ingredients.size(); m++) {
-                if (ing[k] == recipeList[i].ingredients[m]) {
-                    count++;
-                }
-            }
-
-        }
-        if (count == ing.size()) {
-            if (size < 499) {
-                insertToPQ(recipeList[i].name);
-            }
-            else {
-                return;
-            }
-        }
-
-        q.pop();
-
-        for (int j = 0; j < recipes[i].size(); j++) {
-            if (!beenThere[recipes[i][j].first]) {
-                beenThere[recipes[i][j].first] = true;
-                q.push(recipes[i][j].first);
-            }
-        }
-    }
-}
-
 
 //The following functions were referenced from GeeksforGeeks
 //https://www.geeksforgeeks.org/priority-queue-using-binary-heap/
@@ -270,4 +227,48 @@ Recipe AdjacencyList::extractMin() {
 
     heapifyDown(0);
     return resultRecipe;
+}
+
+
+//Referenced Sarah Nix's stepik code (which was inspired from Aman's slides)
+//This function uses a BFS to select recipes to add to a priority queue
+//These recipes must contain all the ingredients given by the user
+void AdjacencyList::BFS(vector<string>& ing) {
+    auto src = recipes.begin();
+    unordered_map<string, bool> beenThere;
+    beenThere[src->first] = true;
+
+    queue<string> q;
+    q.push(src->first);
+
+    while (!q.empty()) {
+        string i = q.front();
+
+        int count = 0;
+        for (int k = 0; k < ing.size(); k++) {
+            for (int m = 0; m < recipeList[i].ingredients.size(); m++) {
+                if (ing[k] == recipeList[i].ingredients[m]) {
+                    count++;
+                }
+            }
+
+        }
+        if (count == ing.size()) {
+            if (size < 499) {
+                insertToPQ(recipeList[i].name);
+            }
+            else {
+                return;
+            }
+        }
+
+        q.pop();
+
+        for (int j = 0; j < recipes[i].size(); j++) {
+            if (!beenThere[recipes[i][j].first]) {
+                beenThere[recipes[i][j].first] = true;
+                q.push(recipes[i][j].first);
+            }
+        }
+    }
 }
