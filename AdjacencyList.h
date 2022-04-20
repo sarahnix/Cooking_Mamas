@@ -7,7 +7,7 @@ private:
     vector<Recipe> cookbook;
 
     //Selected Priority Queue for recipes containing the user's ingredients
-    string pq[500]; ///this should be changed for testing purposes
+    string pq[500]; /// this should be changed for testing purposes
     int size = -1;
 
 public:

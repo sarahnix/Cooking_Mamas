@@ -196,6 +196,7 @@ Recipe PriorityQueue::selectRecipe(vector<string> ing) {
             return r;
         }
     }
+
     Recipe recipe;
     cout << "No recipes found" << endl;
     return recipe;
