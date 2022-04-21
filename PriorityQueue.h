@@ -5,7 +5,7 @@ private:
     Recipe R[100000]; /// this should be changed for testing purposes (making the video)
     int RSize = -1;
 
-    string pq[500]; ///this can also be changed for testing
+    Recipe pq[500]; ///this can also be changed for testing
     int pqSize = -1;
 
 public:
@@ -24,5 +24,11 @@ public:
     void insert(Recipe& r);
     Recipe extractMin();
 
-    Recipe selectRecipe(vector<string> ing);
+    void subshiftUp(int i);
+    void subshiftDown(int i);
+    void subinsert(Recipe& r);
+    Recipe subextractMin();
+
+    void selectRecipe(vector<string> ing);
+    void updatePQ(Recipe& recipe);
 };

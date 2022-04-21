@@ -180,7 +180,7 @@ Recipe PriorityQueue::extractMin() {
 }
 
 //Function to insert into a priority queue select recipes which contain all the ingredients given by the user
-Recipe PriorityQueue::selectRecipe(vector<string> ing) {
+void PriorityQueue::selectRecipe(vector<string> ing) {
     for (int i = 0; i < RSize; i++) {
         Recipe r = extractMin();
 
@@ -193,11 +193,59 @@ Recipe PriorityQueue::selectRecipe(vector<string> ing) {
                 }
             }
         if (count == ing.size()) {
-            return r;
+            updatePQ(r);
         }
     }
+}
 
-    Recipe recipe;
-    cout << "No recipes found" << endl;
-    return recipe;
+void PriorityQueue::updatePQ(Recipe& recipe) {
+    subinsert(recipe);
+}
+
+
+void PriorityQueue::subshiftUp(int i) {
+    while (i > 0 && pq[parent(i)].minutes > pq[i].minutes) {
+
+        swap(pq[parent(i)], pq[i]);
+
+        i = parent(i);
+    }
+}
+
+void PriorityQueue::subshiftDown(int i) {
+    int maxIndex = i;
+
+    int l = leftChild(i);
+
+    if (l <= pqSize && pq[l].minutes < pq[maxIndex].minutes) {
+        maxIndex = l;
+    }
+
+    int r = rightChild(i);
+
+    if (r <= RSize && R[r].minutes < R[maxIndex].minutes) {
+        maxIndex = r;
+    }
+
+    if (i != maxIndex) {
+        swap(R[i], R[maxIndex]);
+        shiftDown(maxIndex);
+    }
+}
+
+void PriorityQueue::subinsert(Recipe& r) {
+    pqSize = pqSize + 1;
+    pq[pqSize] = r;
+
+    subshiftUp(pqSize);
+}
+
+Recipe PriorityQueue::subextractMin() {
+    Recipe result = pq[0];
+
+    pq[0] = pq[pqSize];
+    pqSize = pqSize - 1;
+
+    subshiftDown(0);
+    return result;
 }
