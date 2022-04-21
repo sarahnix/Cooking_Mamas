@@ -185,7 +185,6 @@ Recipe PriorityQueue::selectRecipe(vector<string> ing) {
         Recipe r = extractMin();
 
         int count = 0;
-        if (ing.size() < r.ingredients.size()) {
             for (int j = 0; j < ing.size(); j++) {
                 for (int k = 0; k < r.ingredients.size(); k++) {
                     if (ing[j] == r.ingredients[k]) {
@@ -193,7 +192,6 @@ Recipe PriorityQueue::selectRecipe(vector<string> ing) {
                     }
                 }
             }
-        }
         if (count == ing.size()) {
             return r;
         }
