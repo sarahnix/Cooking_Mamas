@@ -223,12 +223,12 @@ void PriorityQueue::subshiftDown(int i) {
 
     int r = rightChild(i);
 
-    if (r <= RSize && R[r].minutes < R[maxIndex].minutes) {
+    if (r <= pqSize && pq[r].minutes < pq[maxIndex].minutes) {
         maxIndex = r;
     }
 
     if (i != maxIndex) {
-        swap(R[i], R[maxIndex]);
+        swap(pq[i], pq[maxIndex]);
         subshiftDown(maxIndex);
     }
 }
