@@ -229,7 +229,7 @@ void PriorityQueue::subshiftDown(int i) {
 
     if (i != maxIndex) {
         swap(R[i], R[maxIndex]);
-        shiftDown(maxIndex);
+        subshiftDown(maxIndex);
     }
 }
 
