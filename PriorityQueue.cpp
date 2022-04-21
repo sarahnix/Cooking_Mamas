@@ -1,7 +1,7 @@
 #include "PriorityQueue.h"
 
 void PriorityQueue::InitializeQueue(Recipe &r) {
-    if (pqSize == 99999) {
+    if (RSize < 100000) {
         insert(r);
     }
 }
