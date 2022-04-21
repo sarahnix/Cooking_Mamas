@@ -154,7 +154,7 @@ void PrintMenuQueue(PriorityQueue& queue) {
         Recipe r;
 
         while (option != 1 && option != 0) {
-            r = queue.extractMin();
+            r = queue.subextractMin();
 
             cout << endl << "Here is your recipe!" << endl;
             cout << "Recipe Name: " << r.name << endl;
